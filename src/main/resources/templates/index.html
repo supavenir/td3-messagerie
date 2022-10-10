@@ -1,6 +1,43 @@
 {{> /include/header }}
 	<div class="ui segment">
-		<div class="ui button" @click="message='ok'">Test</div>
-		<% message %>
+		<div class="ui button" @click="newFormOrga">Ajouter une organisation</div>
 	</div>
+	{{> /orgas/form }}
+	<div v-if="toDelete" class="ui warning icon message">
+	  <i class="warning circle icon"></i>
+	  <div class="content">
+	    <div class="header">
+	      Suppression d'organisation ?
+	    </div>
+	    <p>Supprimer l'organisation <% toDelete.name %> ?</p>
+	    <hr>
+	    <div @click="remove(toDelete)" class="ui positive button">Okay</div>
+	    <div @click="toDelete=null" class="ui button">Annuler</div>
+	  </div>
+	</div>
+	<table class="ui celled table">
+	  <thead>
+	    <tr>
+		    <th>Nom</th>
+		    <th>Aliases</th>
+		    <th>Domaine</th>
+		    <th>Actions</th>
+	  	</tr>
+	  </thead>
+	  <tbody>
+	    <tr v-for="orga in organizations">
+	      <td><% orga.name %></td>
+	      <td><% orga.aliases %></td>
+	      <td><% orga.domain %></td>
+	      <td>
+	      	<div @click="editForm(orga)" class="ui mini icon button">
+	      		<i class="ui edit icon"></i>
+	      	</div>
+	      	<div @click="confDelete(orga)" class="ui red mini icon button">
+	      		<i class="ui delete icon"></i>
+	      	</div>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
 {{> /include/footer }}

@@ -1,0 +1,17 @@
+<div v-if="orga" class="ui form" id="form">
+  <div class="field">
+    <label>Nom</label>
+    <input type="text" name="name" v-model="orga.name" placeholder="Name">
+  </div>
+  <div class="field">
+    <label>Aliases</label>
+    <input type="text" name="aliases" v-model="orga.aliases" placeholder="Aliases">
+  </div>
+  <div class="field">
+    <label>Domain</label>
+    <input type="text" name="domain" v-model="orga.domain" placeholder="Domain">
+  </div>
+	<div class="ui error message"></div>
+  <div @click="newOrgaSubmit" class="ui green button">Valider</div>
+  <div @click="orga=null" class="ui red button">Annuler</div>
+</div>
