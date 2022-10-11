@@ -1,4 +1,4 @@
-<div @keyup.enter="orga=null" v-if="orga" class="ui form" id="form">
+<div @keyup.enter="addOrUpdate" v-if="orga" class="ui form" id="form">
   <div class="field">
     <label>Nom</label>
     <input type="text" name="name" v-focus v-model="orga.name" placeholder="Name" maxlength="20">
@@ -12,7 +12,8 @@
     <input type="text" name="domain" v-model="orga.domain" placeholder="Domain">
   </div>
 	<div class="ui error message"></div>
-  <div v-if="orga.id" @click="updateOrgaSubmit" class="ui green button">Valider (update)</div>
-  <div v-else @click="newOrgaSubmit" class="ui green button">Valider (add)</div>
-  <div @click="orga=null" class="ui red button">Annuler</div>
+	<hr>
+    <div v-if="orga.id" @click="updateOrgaSubmit" class="ui green button">Valider (update)</div>
+    <div v-else @click="newOrgaSubmit" class="ui green button">Valider (add)</div>
+    <div @click="orga=null" class="ui red button">Annuler</div>
 </div>
