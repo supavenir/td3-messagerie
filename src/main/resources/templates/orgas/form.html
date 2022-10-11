@@ -1,7 +1,7 @@
 <div @keyup.enter="orga=null" v-if="orga" class="ui form" id="form">
   <div class="field">
     <label>Nom</label>
-    <input type="text" name="name" v-model="orga.name" placeholder="Name" maxlength="20">
+    <input type="text" name="name" v-focus v-model="orga.name" placeholder="Name" maxlength="20">
   </div>
   <div class="field">
     <label>Aliases</label>

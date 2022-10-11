@@ -60,6 +60,7 @@ public class OrgaController {
 						"Object.assign(this.orga.original,response.data);"
 								+ orgaService.toast("success", "Organisation ${this.orga.name} modifiée.")
 								+ "this.orga=null;")));
+		vue.addDirective("focus").onInserted("el.focus()");
 		return "index";
 	}
 }
