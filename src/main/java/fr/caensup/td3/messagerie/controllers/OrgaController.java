@@ -1,6 +1,7 @@
 package fr.caensup.td3.messagerie.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,10 +14,13 @@ import io.github.jeemv.springboot.vuejs.utilities.Http;
 import io.github.jeemv.springboot.vuejs.utilities.JsArray;
 
 @Controller
-@RequestMapping({ "/orgas", "/orgas/" })
+@RequestMapping({ "/", "" })
 public class OrgaController {
 
-	private static String restURL = "http://127.0.0.1:8080/rest/organizations/";
+	private static String restURL;
+
+	@Autowired
+	private Environment env;
 
 	@Autowired
 	private VueJS vue;
@@ -34,6 +38,7 @@ public class OrgaController {
 
 	@GetMapping("")
 	public String indexAction() {
+		restURL = env.getProperty("rest.url") + "organizations/";
 		// Ajout des méthodes à l'objet VueJS
 		vue.addData("toDelete");
 		vue.addData("orga");
