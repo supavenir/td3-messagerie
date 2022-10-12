@@ -42,7 +42,7 @@ public class OrgaController {
 		// Ajout des data à l'objet VueJS
 		vue.addData("toDelete");
 		vue.addData("orga");
-		vue.addData("popOrga");
+		vue.addData("groups", "[]");
 		vue.addData("organizations", orgaRepo.findAll());
 		// Ajout des méthodes à l'objet VueJS
 		vue.addMethod("remove", Http.delete(orgaService.getURL(restURL, "orga.id"),
@@ -62,7 +62,9 @@ public class OrgaController {
 								+ orgaService.toast("success", "Organisation ${this.orga.name} modifiée.")
 								+ vue.set("orga", "null"))));
 		vue.addMethod("addOrUpdate", "if(this.orga.id){this.updateOrgaSubmit();}else{this.newOrgaSubmit();}");
-		vue.addMethod("popup", "this.popOrga=orga;", "orga");
+		vue.addMethod("popup",
+				";" + Http.get(orgaService.getURL(restURL, "orga.id") + "+'/groups'", "this.groups=response.data;"),
+				"orga");
 		vue.addDirective("focus").onInserted("el.focus()");
 		vue.addDirective("popup").onInserted("$(el).popup({popup: $('.ui.popup'), on: 'click'});");
 		return "index";

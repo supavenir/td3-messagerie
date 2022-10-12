@@ -30,7 +30,8 @@ public class RestOrgaController {
 
 	@GetMapping("{id}/groups")
 	public Iterable<Group> groupesAction(@PathVariable int id) {
-		return null;
+		Optional<Organization> orga = orgaRepo.findById(id);
+		return orga.get().getGroupes();
 	}
 
 	@GetMapping("/{id}")

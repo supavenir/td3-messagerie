@@ -40,5 +40,15 @@
 	    </tr>
 	  </tbody>
 	</table>
-	<div class="ui popup" v-show="popOrga"><%popOrga.name%></div>
+	<div class="ui popup">
+		<ul v-for="group in groups">
+			<li><%group.name%></li>
+		</ul>
+	</div>
+	
+		<div class="ui segment">
+		<ul v-for="group in groups">
+			<li><%group.name%></li>
+		</ul>
+	</div>
 {{> /include/footer }}
