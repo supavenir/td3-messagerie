@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.caensup.td3.messagerie.exceptions.OrgaNotFoundException;
+import fr.caensup.td3.messagerie.models.Group;
 import fr.caensup.td3.messagerie.models.Organization;
 import fr.caensup.td3.messagerie.repositories.OrgaRepository;
 
@@ -25,6 +26,11 @@ public class RestOrgaController {
 	@GetMapping("")
 	public Iterable<Organization> indexAction() {
 		return orgaRepo.findAll();
+	}
+
+	@GetMapping("{id}/groups")
+	public Iterable<Group> groupesAction(@PathVariable int id) {
+		return null;
 	}
 
 	@GetMapping("/{id}")
