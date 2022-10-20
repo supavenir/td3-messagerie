@@ -13,11 +13,11 @@ import fr.caensup.td3.messagerie.rest.RestMessage;
 @ControllerAdvice
 public class RestControllerAdvice {
 
-	@ResponseBody
-	@JsonFormat
-	@ResponseStatus(value = HttpStatus.NOT_FOUND)
-	@ExceptionHandler(OrgaNotFoundException.class)
-	public RestMessage orgaNotFound(OrgaNotFoundException ex) {
-		return new RestMessage("404", ex.getMessage());
-	}
+  @ResponseBody
+  @JsonFormat
+  @ResponseStatus(value = HttpStatus.NOT_FOUND)
+  @ExceptionHandler(OrgaNotFoundException.class)
+  public RestMessage orgaNotFound(OrgaNotFoundException ex) {
+    return new RestMessage("404", ex.getMessage());
+  }
 }
