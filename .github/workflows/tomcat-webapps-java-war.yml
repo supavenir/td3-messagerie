@@ -44,5 +44,4 @@ jobs:
           script: |
             echo ${{ secrets.ROOT_PASSWORD }} | sudo -S mv /tmp/source/target/messagerie.war /var/lib/tomcat9/webapps/messagerie.war -f
             echo ${{ secrets.ROOT_PASSWORD }} | sudo -S systemctl restart tomcat9
-            echo ${{ secrets.ROOT_PASSWORD }} | sudo -S  rm /tmp/source/target/messagerie.war
 
