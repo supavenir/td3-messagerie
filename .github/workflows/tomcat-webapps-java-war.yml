@@ -42,7 +42,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            sudo mv ~/source/messagerie.war /var/lib/tomcat9/webapps/messagerie.war -f
-            sudo systemctl restart tomcat9
-            sudo rm ~/source/messagerie.war
+            echo ${{ secrets.ROOT_PASSWORD }} | sudo su -S
+            mv ~/source/messagerie.war /var/lib/tomcat9/webapps/messagerie.war -f
+            systemctl restart tomcat9
+            rm ~/source/messagerie.war
 
