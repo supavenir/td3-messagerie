@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class UIOrgaService {
   public String getFormValidation() {
     return "$('.ui.form').form({on: 'blur', 'inline': true, fields:{ name:"
-               + " ['empty','maxLength[20]'], aliases: 'empty', domain: 'empty'}});";
+        + " ['empty','maxLength[20]'], aliases: 'empty', domain: 'empty'}});";
   }
 
   public String ifFormIsValid(String code) {
