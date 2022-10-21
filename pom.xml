@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>14</java.version>
 		<tomcat.version>9.0.43</tomcat.version>
+		<skipTests>true</skipTests>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -89,6 +90,13 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>				
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>${skipTests}</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>
