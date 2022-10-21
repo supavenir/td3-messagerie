@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            echo ${{ secrets.ROOT_PASSWORD }} | sudo -S
+            echo ${{ secrets.ROOT_PASSWORD }} | sudo -S ls -l
             mv /tmp/source/messagerie.war /var/lib/tomcat9/webapps/messagerie.war -f
             systemctl restart tomcat9
             rm /tmp/source/messagerie.war
