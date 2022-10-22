@@ -10,8 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 class Td3MessagerieApplicationTests {
 
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
   @Test
   void contextLoads() {}
