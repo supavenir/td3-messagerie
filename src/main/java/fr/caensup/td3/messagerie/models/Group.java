@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -40,7 +42,9 @@ public class Group {
   @Column(length = 40, nullable = false)
   private String aliases;
 
-  @ManyToMany() private List<User> users = new ArrayList<>();
+	@ManyToMany()
+	@JsonIgnore
+	private List<User> users = new ArrayList<>();
 
   @ManyToOne private Organization organization;
 
