@@ -18,8 +18,7 @@ import fr.caensup.td3.messagerie.repositories.OrgaRepository;
 @RestController
 @RequestMapping("/rest/organizations")
 public class RestOrgaController {
-  @Autowired
-  private OrgaRepository orgaRepo;
+  @Autowired private OrgaRepository orgaRepo;
 
   @GetMapping("")
   public Iterable<Organization> indexAction() {
@@ -59,12 +58,16 @@ public class RestOrgaController {
 
   @PutMapping("{id}")
   public Organization updateAction(@RequestBody Organization orga, @PathVariable int id) {
-    return orgaRepo.findById(id).map((loadedOrga) -> {
-      loadedOrga.setName(orga.getName());
-      loadedOrga.setAliases(orga.getAliases());
-      loadedOrga.setDomain(orga.getDomain());
-      orgaRepo.save(loadedOrga);
-      return loadedOrga;
-    }).orElseThrow(() -> new OrgaNotFoundException(id));
+    return orgaRepo
+        .findById(id)
+        .map(
+            (loadedOrga) -> {
+              loadedOrga.setName(orga.getName());
+              loadedOrga.setAliases(orga.getAliases());
+              loadedOrga.setDomain(orga.getDomain());
+              orgaRepo.save(loadedOrga);
+              return loadedOrga;
+            })
+        .orElseThrow(() -> new OrgaNotFoundException(id));
   }
 }
