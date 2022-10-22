@@ -12,8 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 class Td3MessagerieApplicationTests {
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
   private String contextPath = "/messagerie";
 
@@ -22,7 +21,8 @@ class Td3MessagerieApplicationTests {
 
   @Test
   void indexTest() throws Exception {
-    this.mvc.perform(get(contextPath))
+    this.mvc
+        .perform(get(contextPath))
         .andExpect(content().string(containsStringIgnoringCase("Ajouter une organisation")));
   }
 }
