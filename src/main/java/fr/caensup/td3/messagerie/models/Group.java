@@ -42,9 +42,7 @@ public class Group {
   @Column(length = 40, nullable = false)
   private String aliases;
 
-	@ManyToMany()
-	@JsonIgnore
-	private List<User> users = new ArrayList<>();
+  @ManyToMany() @JsonIgnore private List<User> users = new ArrayList<>();
 
   @ManyToOne private Organization organization;
 

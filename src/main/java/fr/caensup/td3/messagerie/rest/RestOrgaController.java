@@ -27,20 +27,20 @@ public class RestOrgaController {
     return orgaRepo.findAll();
   }
 
-	@GetMapping("{id}/groups")
-	public Iterable<Group> groupesAction(@PathVariable int id) {
-		Optional<Organization> orga = orgaRepo.findById(id);
-		return orga.get().getGroupes();
-	}
+  @GetMapping("{id}/groups")
+  public Iterable<Group> groupesAction(@PathVariable int id) {
+    Optional<Organization> orga = orgaRepo.findById(id);
+    return orga.get().getGroupes();
+  }
 
-	@GetMapping("/{id}")
-	public Organization oneAction(@PathVariable int id) {
-		Optional<Organization> opt = orgaRepo.findById(id);
-		if (opt.isPresent()) {
-			return opt.get();
-		}
-		throw new OrgaNotFoundException(id);
-	}
+  @GetMapping("/{id}")
+  public Organization oneAction(@PathVariable int id) {
+    Optional<Organization> opt = orgaRepo.findById(id);
+    if (opt.isPresent()) {
+      return opt.get();
+    }
+    throw new OrgaNotFoundException(id);
+  }
 
   @GetMapping("/{id}")
   public Organization oneAction(@PathVariable int id) {
