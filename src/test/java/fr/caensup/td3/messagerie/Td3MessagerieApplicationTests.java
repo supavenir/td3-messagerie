@@ -16,18 +16,15 @@ import org.springframework.web.context.WebApplicationContext;
 @AutoConfigureMockMvc
 class Td3MessagerieApplicationTests {
 
-  @Autowired
-  private WebApplicationContext context;
+  @Autowired private WebApplicationContext context;
 
   @Value("server.contextPath")
   private String contextPath;
 
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
   @Test
   void contextLoads() {}
-
 
   @BeforeAll
   public void setUp() {
