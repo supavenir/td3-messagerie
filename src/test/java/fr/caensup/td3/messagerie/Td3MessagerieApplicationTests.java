@@ -11,15 +11,16 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 class Td3MessagerieApplicationTests {
+  @Autowired
+  private MockMvc mvc;
 
-  @Autowired private MockMvc mvc;
+  private String contextPath = "/messagerie";
 
   @Test
   void contextLoads() {}
 
   @Test
   void indexTest() throws Exception {
-    String path = mvc.getDispatcherServlet().getServletContext().getContextPath();
-    this.mvc.perform(get(path)).andExpect(content().string("Ajouter une organisation"));
+    this.mvc.perform(get(contextPath)).andExpect(content().string("Ajouter une organisation"));
   }
 }
