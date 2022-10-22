@@ -1,7 +1,6 @@
 package fr.caensup.td3.messagerie.rest;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import fr.caensup.td3.messagerie.exceptions.OrgaNotFoundException;
 import fr.caensup.td3.messagerie.models.Group;
 import fr.caensup.td3.messagerie.models.Organization;
@@ -20,7 +18,8 @@ import fr.caensup.td3.messagerie.repositories.OrgaRepository;
 @RestController
 @RequestMapping("/rest/organizations")
 public class RestOrgaController {
-  @Autowired private OrgaRepository orgaRepo;
+  @Autowired
+  private OrgaRepository orgaRepo;
 
   @GetMapping("")
   public Iterable<Organization> indexAction() {
@@ -31,15 +30,6 @@ public class RestOrgaController {
   public Iterable<Group> groupesAction(@PathVariable int id) {
     Optional<Organization> orga = orgaRepo.findById(id);
     return orga.get().getGroupes();
-  }
-
-  @GetMapping("/{id}")
-  public Organization oneAction(@PathVariable int id) {
-    Optional<Organization> opt = orgaRepo.findById(id);
-    if (opt.isPresent()) {
-      return opt.get();
-    }
-    throw new OrgaNotFoundException(id);
   }
 
   @GetMapping("/{id}")
@@ -69,16 +59,12 @@ public class RestOrgaController {
 
   @PutMapping("{id}")
   public Organization updateAction(@RequestBody Organization orga, @PathVariable int id) {
-    return orgaRepo
-        .findById(id)
-        .map(
-            (loadedOrga) -> {
-              loadedOrga.setName(orga.getName());
-              loadedOrga.setAliases(orga.getAliases());
-              loadedOrga.setDomain(orga.getDomain());
-              orgaRepo.save(loadedOrga);
-              return loadedOrga;
-            })
-        .orElseThrow(() -> new OrgaNotFoundException(id));
+    return orgaRepo.findById(id).map((loadedOrga) -> {
+      loadedOrga.setName(orga.getName());
+      loadedOrga.setAliases(orga.getAliases());
+      loadedOrga.setDomain(orga.getDomain());
+      orgaRepo.save(loadedOrga);
+      return loadedOrga;
+    }).orElseThrow(() -> new OrgaNotFoundException(id));
   }
 }
