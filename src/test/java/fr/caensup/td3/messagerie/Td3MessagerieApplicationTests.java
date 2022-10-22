@@ -1,5 +1,6 @@
 package fr.caensup.td3.messagerie;
 
+import static org.hamcrest.CoreMatchers.containsStringIgnoringCase;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 class Td3MessagerieApplicationTests {
-  @Autowired private MockMvc mvc;
+  @Autowired
+  private MockMvc mvc;
 
   private String contextPath = "/messagerie";
 
@@ -20,6 +22,7 @@ class Td3MessagerieApplicationTests {
 
   @Test
   void indexTest() throws Exception {
-    this.mvc.perform(get(contextPath)).andExpect(content().string("Ajouter une organisation"));
+    this.mvc.perform(get(contextPath))
+        .andExpect(content().string(containsStringIgnoringCase("Ajouter une organisation")));
   }
 }
