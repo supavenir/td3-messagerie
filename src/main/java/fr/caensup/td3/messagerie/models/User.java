@@ -25,35 +25,32 @@ import lombok.Setter;
 @Entity
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
 
-	@Column(length = 40, nullable = false)
-	@NonNull
-	private String firstname;
+  @Column(length = 40, nullable = false)
+  @NonNull
+  private String firstname;
 
-	@Column(length = 40, nullable = false)
-	@NonNull
-	private String lastname;
+  @Column(length = 40, nullable = false)
+  @NonNull
+  private String lastname;
 
-	@Column(length = 255, nullable = false)
-	@NonNull
-	private String email;
+  @Column(length = 255, nullable = false)
+  @NonNull
+  private String email;
 
-	@Column(nullable = false)
-	@NonNull
-	private String password;
+  @Column(nullable = false)
+  @NonNull
+  private String password;
 
-	@Column(nullable = true)
-	private boolean suspended;
+  @Column(nullable = true)
+  private boolean suspended;
 
-	@JsonIgnore
-	@ManyToOne
-	private Organization organization;
+  @JsonIgnore @ManyToOne private Organization organization;
 
-	@JsonIgnore
-	@ManyToMany(mappedBy = "users")
-	private List<Group> groupes;
-
+  @JsonIgnore
+  @ManyToMany(mappedBy = "users")
+  private List<Group> groupes;
 }

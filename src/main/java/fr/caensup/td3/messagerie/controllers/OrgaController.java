@@ -14,27 +14,23 @@ import io.github.jeemv.springboot.vuejs.utilities.Http;
 import io.github.jeemv.springboot.vuejs.utilities.JsArray;
 
 @Controller
-@RequestMapping({ "/", "" })
+@RequestMapping({"/", ""})
 public class OrgaController {
 
-	private static String restURL;
+  private static String restURL;
 
-	@Autowired
-	private Environment env;
+  @Autowired private Environment env;
 
-	@Autowired
-	private VueJS vue;
+  @Autowired private VueJS vue;
 
-	@Autowired
-	private UIOrgaService orgaService;
+  @Autowired private UIOrgaService orgaService;
 
-	@Autowired
-	private OrgaRepository orgaRepo;
+  @Autowired private OrgaRepository orgaRepo;
 
-	@ModelAttribute("vue")
-	public VueJS getVue() {
-		return this.vue;
-	}
+  @ModelAttribute("vue")
+  public VueJS getVue() {
+    return this.vue;
+  }
 
 	@GetMapping("")
 	public String indexAction() {

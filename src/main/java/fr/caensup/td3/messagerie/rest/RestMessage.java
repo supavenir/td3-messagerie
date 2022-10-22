@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class RestMessage {
-	private String type;
-	private String content;
+  private String type;
+  private String content;
 }

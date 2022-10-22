@@ -26,33 +26,31 @@ import lombok.Setter;
 @Entity
 public class Group {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
 
-	@NonNull
-	@Column(length = 40, nullable = false)
-	private String name;
+  @NonNull
+  @Column(length = 40, nullable = false)
+  private String name;
 
-	@NonNull
-	@Column(length = 40, nullable = false)
-	private String email;
+  @NonNull
+  @Column(length = 40, nullable = false)
+  private String email;
 
-	@NonNull
-	@Column(length = 40, nullable = false)
-	private String aliases;
+  @NonNull
+  @Column(length = 40, nullable = false)
+  private String aliases;
 
 	@ManyToMany()
 	@JsonIgnore
 	private List<User> users = new ArrayList<>();
 
-	@ManyToOne
-	private Organization organization;
+  @ManyToOne private Organization organization;
 
-	public void addUSer(User us) {
-		if (us.getOrganization().equals(this.organization)) {
-			users.add(us);
-		}
-
-	}
+  public void addUSer(User us) {
+    if (us.getOrganization().equals(this.organization)) {
+      users.add(us);
+    }
+  }
 }
