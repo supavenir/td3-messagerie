@@ -16,6 +16,8 @@ import io.github.jeemv.springboot.vuejs.utilities.JsArray;
 @RequestMapping({"/", ""})
 public class OrgaController {
 
+  private static final String VERSION = "0.0.1";
+
   private static String restURL;
 
   @Autowired
@@ -33,6 +35,11 @@ public class OrgaController {
   @ModelAttribute("vue")
   public VueJS getVue() {
     return this.vue;
+  }
+
+  @ModelAttribute("version")
+  public String getVersion() {
+    return VERSION;
   }
 
   @GetMapping("")
