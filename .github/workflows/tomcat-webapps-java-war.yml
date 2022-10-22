@@ -1,8 +1,8 @@
 name: Build and deploy WAR app to VM Web App
 
 on:
-  push:
-    branches: [ "main" ]
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
