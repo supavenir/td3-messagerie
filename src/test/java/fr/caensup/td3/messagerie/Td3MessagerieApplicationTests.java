@@ -11,8 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 class Td3MessagerieApplicationTests {
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
   private String contextPath = "/messagerie";
 
