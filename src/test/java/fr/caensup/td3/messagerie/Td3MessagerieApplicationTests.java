@@ -16,8 +16,7 @@ class Td3MessagerieApplicationTests {
   @Value("server.contextPath")
   private String contextPath;
 
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
   @Test
   void contextLoads() {}
