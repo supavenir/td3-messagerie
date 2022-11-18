@@ -4,6 +4,9 @@ import static org.hamcrest.CoreMatchers.containsStringIgnoringCase;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -37,7 +40,15 @@ class Td3MessagerieApplicationTests {
   @Test
   @WithMockUser(username = "tori.cruickshank@hotmail.com", password = "0000")
   void indexTest() throws Exception {
-    this.mvc.perform(get("/"))
+    this.mvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"))
+        .andExpect(model().attributeExists("quickNote"))
+        .andExpect(content().string(containsStringIgnoringCase("tori.cruickshank@hotmail.com")));
+  }
+
+  @Test
+  @WithMockUser(username = "tori.cruickshank@hotmail.com", password = "0000")
+  void logoutTest() throws Exception {
+    this.mvc.perform(get("/logout")).andExpect(status().isOk())
         .andExpect(content().string(containsStringIgnoringCase("tori.cruickshank@hotmail.com")));
   }
 
