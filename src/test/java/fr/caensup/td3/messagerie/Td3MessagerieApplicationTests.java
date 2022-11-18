@@ -24,22 +24,20 @@ class Td3MessagerieApplicationTests {
 
   private MockMvc mvc;
 
-  private String contextPath = "/";
-
   @Autowired
   private WebApplicationContext context;
 
 
   @BeforeAll
   public void setup() {
-    mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
+    this.mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
   }
 
   @Test
   @WithAnonymousUser
   void indexTest() throws Exception {
 
-    this.mvc.perform(get(contextPath))
+    this.mvc.perform(get("/login"))
         .andExpect(content().string(containsStringIgnoringCase("Connexion à Messagerie App")));
 
   }
