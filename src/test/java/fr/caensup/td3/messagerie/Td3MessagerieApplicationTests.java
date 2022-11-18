@@ -5,14 +5,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import fr.caensup.td3.messagerie.config.WebSecurityConfig;
 
 @SpringBootTest
-@AutoConfigureMockMvc
-@TestPropertySource(properties = {"security.test=false"})
+@AutoConfigureMockMvc(addFilters = false)
+@EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class, WebSecurityConfig.class})
 class Td3MessagerieApplicationTests {
   @Autowired
   private MockMvc mvc;
