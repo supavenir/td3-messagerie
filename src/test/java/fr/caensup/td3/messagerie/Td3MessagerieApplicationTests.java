@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -34,11 +35,16 @@ class Td3MessagerieApplicationTests {
   }
 
   @Test
-  @WithAnonymousUser
+  @WithMockUser(username = "tori.cruickshank@hotmail.com", password = "0000")
   void indexTest() throws Exception {
+    this.mvc.perform(get("/"))
+        .andExpect(content().string(containsStringIgnoringCase("tori.cruickshank@hotmail.com")));
+  }
 
+  @Test
+  @WithAnonymousUser
+  void loginTest() throws Exception {
     this.mvc.perform(get("/login"))
         .andExpect(content().string(containsStringIgnoringCase("Connexion à Messagerie App")));
-
   }
 }
