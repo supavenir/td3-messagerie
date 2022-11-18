@@ -22,7 +22,6 @@ import org.springframework.web.context.WebApplicationContext;
 @TestInstance(Lifecycle.PER_CLASS)
 class Td3MessagerieApplicationTests {
 
-  @Autowired
   private MockMvc mvc;
 
   private String contextPath = "/";
