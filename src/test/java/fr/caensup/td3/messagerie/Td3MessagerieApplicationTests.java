@@ -10,11 +10,10 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import fr.caensup.td3.messagerie.config.WebSecurityConfig;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
-@EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class, WebSecurityConfig.class})
+@EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class})
 class Td3MessagerieApplicationTests {
   @Autowired
   private MockMvc mvc;
