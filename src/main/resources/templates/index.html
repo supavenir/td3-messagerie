@@ -40,9 +40,14 @@
 	    </tr>
 	  </tbody>
 	</table>
-	<div v-if="groups" class="ui segment">
-		<ul v-for="group in groups">
-			<li><%group.name%></li>
-		</ul>
-	</div>
+	<section v-if="groups">
+		<h2 class="ui attached header">
+		Groupes
+		</h2>
+		<div class="ui attached segment">
+			<ul class="ui list" v-for="group in groups">
+				<li class="item"><%group.name%></li>
+			</ul>
+		</div>
+	</section>
 {{> /include/footer }}

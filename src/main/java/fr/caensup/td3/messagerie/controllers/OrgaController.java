@@ -4,19 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import fr.caensup.td3.messagerie.repositories.OrgaRepository;
 import fr.caensup.td3.messagerie.services.UIOrgaService;
-import io.github.jeemv.springboot.vuejs.VueJS;
 import io.github.jeemv.springboot.vuejs.utilities.Http;
 import io.github.jeemv.springboot.vuejs.utilities.JsArray;
 
 @Controller
 @RequestMapping({"/", ""})
-public class OrgaController {
+public class OrgaController extends AbstractController {
 
-  private static final String VERSION = "0.0.1";
 
   private static String restURL;
 
@@ -24,23 +21,10 @@ public class OrgaController {
   private Environment env;
 
   @Autowired
-  private VueJS vue;
-
-  @Autowired
   private UIOrgaService orgaService;
 
   @Autowired
   private OrgaRepository orgaRepo;
-
-  @ModelAttribute("vue")
-  public VueJS getVue() {
-    return this.vue;
-  }
-
-  @ModelAttribute("version")
-  public String getVersion() {
-    return VERSION;
-  }
 
   @GetMapping("")
   public String indexAction() {
@@ -48,7 +32,7 @@ public class OrgaController {
     // Ajout des data à l'objet VueJS
     vue.addData("toDelete");
     vue.addData("orga");
-    vue.addData("groups", "[]");
+    vue.addData("groups", null);
     vue.addData("organizations", orgaRepo.findAll());
     // Ajout des méthodes à l'objet VueJS
     vue.addMethod("remove", Http.delete(orgaService.getURL(restURL, "orga.id"),

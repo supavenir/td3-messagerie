@@ -8,6 +8,13 @@
 </head>
 <body>
 <div id="app" class="ui container" v-cloak>
-<div class="ui menu">
+<div class="ui secondary menu">
+{{#user}}
+	<div class="active item">{{name}}
+	{{#connected}}
+		&nbsp;<a class="ui mini black button" href="./logout">Logout</a>
+	{{/connected}}
+	</div>
+{{/user}}
 <div class="item right floated">Version : <span class="ui brown label">{{version}}</span></div>
 </div>
