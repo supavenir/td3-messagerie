@@ -41,7 +41,7 @@ class Td3MessagerieApplicationTests {
   @WithMockUser(username = "tori.cruickshank@hotmail.com", password = "0000")
   void indexTest() throws Exception {
     this.mvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"))
-        .andExpect(model().attributeExists("quickNote"))
+        .andExpect(model().attributeExists("vue")).andExpect(model().attributeExists("version"))
         .andExpect(content().string(containsStringIgnoringCase("tori.cruickshank@hotmail.com")));
   }
 
