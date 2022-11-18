@@ -48,8 +48,7 @@ class Td3MessagerieApplicationTests {
   @Test
   @WithMockUser(username = "tori.cruickshank@hotmail.com", password = "0000")
   void logoutTest() throws Exception {
-    this.mvc.perform(get("/logout")).andExpect(status().isNoContent())
-        .andExpect(content().string(containsStringIgnoringCase("tori.cruickshank@hotmail.com")));
+    this.mvc.perform(get("/logout")).andExpect(status().isNoContent());
   }
 
   @Test
