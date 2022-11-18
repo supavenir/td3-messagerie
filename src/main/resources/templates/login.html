@@ -1,8 +1,8 @@
 {{> /include/header }}
-<div class="ui middle aligned center aligned grid">
+<div class="ui middle grid">
   <div class="column">
     <h2 class="ui black image header">
-      <img src="assets/images/hierarchical-structure.png" class="image">
+      <img src="assets/images/utilisateur.png" class="image">
       <div class="content">
         Connexion à Messagerie App
       </div>
@@ -26,18 +26,19 @@
 
       <div class="ui error message"></div>
     </form>
-    <div v-if="error" class="ui icon error message">
-      <i class="warning circle icon"></i>
+    <div v-if="message" :class="message.type">
+      <i :class="message.icon"></i>
 	  <div class="content">
 	    <div class="header">
-	      Erreur d'authentification
+	      <% message.title %>
 	    </div>
-	    <p>Informations d'identification incorrectes !</p>
+	    <p><% message.content %></p>
 	  </div>
     </div>
     <div class="ui message">
       New to us? <a href="#">Sign Up</a>
     </div>
+    <a href="https://www.flaticon.com/fr/icones-gratuites/sidentifier" title="sidentifier icônes">icônes créées par ultimatearm - Flaticon</a>
   </div>
 </div>
 {{> /include/footer }}
